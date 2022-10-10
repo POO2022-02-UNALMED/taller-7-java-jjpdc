@@ -1,44 +1,49 @@
 package comunicacion;
 
-public abstract class Escrito extends Pictograma{
-	
-	private String titulo;
-	private String autor;
-	private int paginas;
-	public Escrito(String origen, String titulo, String autor, int paginas) {
-		super(origen);
-		this.titulo = titulo;
-		this.autor = autor;
-		this.paginas = paginas;
-	}
-	
-	public String getTitulo() {
-		return titulo;
-	}
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
-	public String getAutor() {
-		return autor;
-	}
-	public void setAutor(String autor) {
-		this.autor = autor;
-	}
-	public int getPaginas() {
-		return paginas;
-	}
-	public void setPaginas(int paginas) {
-		this.paginas = paginas;
-	}
-	
-	public String resumen() {
-		String r = this.getOrigen() + "\n";
-		r += this.titulo + "\n";
-		r += this.autor + "\n";
-		r += this.paginas;
-		return  r;
-	}
-	
-	abstract int palabrasTotales(int palabrasPagina);
-	
+public class Libro extends Escrito {
+    private String co_autor;
+    private String editorial;
+    private String edicion;
+    private String interpretacion;
+    public Libro(String origen, String titulo, String autor, int paginas, String co_autor, String editorial,
+    String edicion, String interpretacion) {
+        super(origen, titulo, autor, paginas);
+        this.co_autor = co_autor;
+        this.editorial = editorial;
+        this.edicion = edicion;
+        this.interpretacion = interpretacion;
+    }
+    public int palabrasTotales(int palabrasPagina){
+        return this.getPaginas()*palabrasPagina*2;
+    }
+    public String interpretacion(){
+        return this.interpretacion;
+    }
+    public String toString(){
+        return (this.getOrigen()+"\n"+this.getTitulo()+"\n"+this.getAutor()+"\n"+this.getPaginas()+"\n"+this.getCo_autor()+"\n"+this.getEditorial()+"\n"+this.getEdicion());
+    }
+    public String getCo_autor() {
+        return co_autor;
+    }
+    public void setCo_autor(String co_autor) {
+        this.co_autor = co_autor;
+    }
+    public String getEditorial() {
+        return editorial;
+    }
+    public void setEditorial(String editorial) {
+        this.editorial = editorial;
+    }
+    public String getEdicion() {
+        return edicion;
+    }
+    public void setEdicion(String edicion) {
+        this.edicion = edicion;
+    }
+    public String getInterpretacion() {
+        return interpretacion;
+    }
+    public void setInterpretacion(String interpretacion) {
+        this.interpretacion = interpretacion;
+    }
 }
