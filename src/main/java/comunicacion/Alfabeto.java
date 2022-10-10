@@ -1,44 +1,43 @@
 package comunicacion;
 
-public abstract class Escrito extends Pictograma{
-	
-	private String titulo;
-	private String autor;
-	private int paginas;
-	public Escrito(String origen, String titulo, String autor, int paginas) {
-		super(origen);
-		this.titulo = titulo;
-		this.autor = autor;
-		this.paginas = paginas;
-	}
-	
-	public String getTitulo() {
-		return titulo;
-	}
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
-	public String getAutor() {
-		return autor;
-	}
-	public void setAutor(String autor) {
-		this.autor = autor;
-	}
-	public int getPaginas() {
-		return paginas;
-	}
-	public void setPaginas(int paginas) {
-		this.paginas = paginas;
-	}
-	
-	public String resumen() {
-		String r = this.getOrigen() + "\n";
-		r += this.titulo + "\n";
-		r += this.autor + "\n";
-		r += this.paginas;
-		return  r;
-	}
-	
-	abstract int palabrasTotales(int palabrasPagina);
-	
+public class Alfabeto extends Pictograma {
+
+    private String letras[];
+    private String interpretacion;
+    public Alfabeto(String origen, String letras[], String interpretacion) {
+        super(origen);
+        this.letras = letras;
+        this.interpretacion = interpretacion;
+    }
+    public String toString(){
+        String resultado="";
+        for (String letra: letras){
+            resultado=(resultado+letra+", ");
+        }
+        return (resultado.substring(0,resultado.length()-2));
+    }
+    public int cantidadLetras(){
+        return this.letras.length;
+    }
+    public String interpretacion(){
+        return this.interpretacion;
+    }
+    public String[] getLetras() {
+        return letras;
+    }
+    public void setLetras(String[] letras) {
+        this.letras = letras;
+    }
+    public String getInterpretacion() {
+        return interpretacion;
+    }
+    public void setInterpretacion(String interpretacion) {
+        this.interpretacion = interpretacion;
+    }
+    public static void main(String[] args) {
+        Alfabeto alfabeto = new Alfabeto("alfabeto griego, occidente",
+			new String [] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"},
+			"Alfabeto latino");
+        System.out.println(alfabeto.toString());
+    }
 }
