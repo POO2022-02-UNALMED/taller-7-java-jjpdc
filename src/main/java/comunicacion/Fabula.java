@@ -1,44 +1,32 @@
 package comunicacion;
 
-public abstract class Escrito extends Pictograma{
-	
-	private String titulo;
-	private String autor;
-	private int paginas;
-	public Escrito(String origen, String titulo, String autor, int paginas) {
-		super(origen);
-		this.titulo = titulo;
-		this.autor = autor;
-		this.paginas = paginas;
-	}
-	
-	public String getTitulo() {
-		return titulo;
-	}
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
-	public String getAutor() {
-		return autor;
-	}
-	public void setAutor(String autor) {
-		this.autor = autor;
-	}
-	public int getPaginas() {
-		return paginas;
-	}
-	public void setPaginas(int paginas) {
-		this.paginas = paginas;
-	}
-	
-	public String resumen() {
-		String r = this.getOrigen() + "\n";
-		r += this.titulo + "\n";
-		r += this.autor + "\n";
-		r += this.paginas;
-		return  r;
-	}
-	
-	abstract int palabrasTotales(int palabrasPagina);
-	
+public class Fabula extends Escrito {
+    private String ensenanza;
+    private String interpretacion;
+    public Fabula(String origen, String titulo, String autor, int paginas, String ensenanza, String interpretacion) {
+        super(origen, titulo, autor, paginas);
+        this.ensenanza = ensenanza;
+        this.interpretacion = interpretacion;
+    }
+    public int palabrasTotales(int palabrasPagina){
+        return this.getPaginas()*palabrasPagina;
+    }
+    public String interpretacion(){
+        return this.interpretacion;
+    }
+    public String toString(){
+        return (this.getOrigen()+"\n"+this.getTitulo()+"\n"+this.getAutor()+"\n"+this.getPaginas()+"\n"+this.getEnsenanza());
+    }
+    public String getEnsenanza() {
+        return ensenanza;
+    }
+    public void setEnsenanza(String ensenanza) {
+        this.ensenanza = ensenanza;
+    }
+    public String getInterpretacion() {
+        return interpretacion;
+    }
+    public void setInterpretacion(String interpretacion) {
+        this.interpretacion = interpretacion;
+    }
 }
