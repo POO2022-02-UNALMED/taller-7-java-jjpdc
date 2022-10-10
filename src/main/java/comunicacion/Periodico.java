@@ -1,44 +1,41 @@
 package comunicacion;
 
-public abstract class Escrito extends Pictograma{
-	
-	private String titulo;
-	private String autor;
-	private int paginas;
-	public Escrito(String origen, String titulo, String autor, int paginas) {
-		super(origen);
-		this.titulo = titulo;
-		this.autor = autor;
-		this.paginas = paginas;
-	}
-	
-	public String getTitulo() {
-		return titulo;
-	}
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
-	public String getAutor() {
-		return autor;
-	}
-	public void setAutor(String autor) {
-		this.autor = autor;
-	}
-	public int getPaginas() {
-		return paginas;
-	}
-	public void setPaginas(int paginas) {
-		this.paginas = paginas;
-	}
-	
-	public String resumen() {
-		String r = this.getOrigen() + "\n";
-		r += this.titulo + "\n";
-		r += this.autor + "\n";
-		r += this.paginas;
-		return  r;
-	}
-	
-	abstract int palabrasTotales(int palabrasPagina);
-	
+public class Periodico extends Escrito {
+    private String fecha;
+    private String primicia;
+    private String interpretacion;
+    public Periodico(String origen, String titulo, String autor, int paginas, String fecha, String primicia,
+            String interpretacion) {
+        super(origen, titulo, autor, paginas);
+        this.fecha = fecha;
+        this.primicia = primicia;
+        this.interpretacion = interpretacion;
+    }
+    public int palabrasTotales(int palabrasPagina){
+        return this.getPaginas()*palabrasPagina*10;
+    }
+    public String interpretacion(){
+        return this.interpretacion;
+    }
+    public String toString(){
+        return (this.getOrigen()+"\n"+this.getTitulo()+"\n"+this.getAutor()+"\n"+this.getPaginas()+"\n"+this.getFecha()+"\n"+this.getPrimicia());
+    }
+    public String getFecha() {
+        return fecha;
+    }
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+    public String getPrimicia() {
+        return primicia;
+    }
+    public void setPrimicia(String primicia) {
+        this.primicia = primicia;
+    }
+    public String getInterpretacion() {
+        return interpretacion;
+    }
+    public void setInterpretacion(String interpretacion) {
+        this.interpretacion = interpretacion;
+    }
 }
